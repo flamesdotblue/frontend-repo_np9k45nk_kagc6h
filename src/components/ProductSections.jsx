@@ -1,145 +1,151 @@
-import React, { useMemo } from 'react';
-import { Heart, Tag, Gift, Video, Truck } from 'lucide-react';
+import { Heart } from "lucide-react";
 
-function ProductCard({ product, isFavorite, onToggleFavorite }) {
+const productsNew = [
+  {
+    id: 1,
+    name: "Royal Silk Saree",
+    price: "₹24,999",
+    img: "https://images.unsplash.com/photo-1542060748-10c28b62716f?q=80&w=1200&auto=format&fit=crop",
+    badge: "New"
+  },
+  {
+    id: 2,
+    name: "Handcrafted Clutch",
+    price: "₹8,499",
+    img: "https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?q=80&w=1200&auto=format&fit=crop",
+    badge: "New"
+  },
+  {
+    id: 3,
+    name: "Embroidered Sherwani",
+    price: "₹49,999",
+    img: "https://images.unsplash.com/photo-1542062703-3c0e5f79caa0?q=80&w=1200&auto=format&fit=crop",
+    badge: "New"
+  }
+];
+
+const productsSale = [
+  {
+    id: 4,
+    name: "Zari Border Saree",
+    price: "₹14,999",
+    prev: "₹18,999",
+    img: "https://images.unsplash.com/photo-1520975922131-c3c6b172e4d7?q=80&w=1200&auto=format&fit=crop",
+    badge: "-25%"
+  },
+  {
+    id: 5,
+    name: "Pearl Set",
+    price: "₹12,499",
+    prev: "₹15,999",
+    img: "https://images.unsplash.com/photo-1603912699214-92627f304eb6?q=80&w=1200&auto=format&fit=crop",
+    badge: "-22%"
+  },
+  {
+    id: 6,
+    name: "Velvet Blazer",
+    price: "₹9,999",
+    prev: "₹13,999",
+    img: "https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop",
+    badge: "-29%"
+  }
+];
+
+function SectionHeader({ id, eyebrow, title, subtitle }) {
   return (
-    <div className="group bg-blue-900/40 border border-blue-800 rounded-xl overflow-hidden shadow hover:shadow-lg transition-shadow">
+    <div id={id} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mb-6">
+        <div className="text-xs tracking-widest uppercase text-[#0c61eb] font-semibold">{eyebrow}</div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">{title}</h2>
+        {subtitle && <p className="text-slate-600 mt-1">{subtitle}</p>}
+      </div>
+    </div>
+  );
+}
+
+function ProductCard({ item }) {
+  return (
+    <div className="group rounded-2xl bg-white/80 backdrop-blur shadow-sm ring-1 ring-slate-200 overflow-hidden">
       <div className="relative aspect-[4/5] overflow-hidden">
-        <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-        <button
-          aria-label="Save to favorites"
-          onClick={() => onToggleFavorite(product)}
-          className="absolute top-3 right-3 p-2 rounded-full bg-blue-900/70 hover:bg-blue-800 text-yellow-400"
-        >
-          <Heart className={isFavorite ? 'fill-yellow-400 text-yellow-400' : ''} />
-        </button>
-        {product.badge && (
-          <span className="absolute left-3 top-3 bg-yellow-400 text-blue-950 text-xs font-bold px-2 py-1 rounded">
-            {product.badge}
+        <img src={item.img} alt={item.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        {item.badge && (
+          <span className="absolute top-3 left-3 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 text-xs font-bold px-3 py-1 shadow">
+            {item.badge}
           </span>
         )}
+        <button className="absolute top-3 right-3 inline-flex items-center justify-center h-9 w-9 rounded-full bg-white/90 text-slate-900 hover:bg-white">
+          <Heart className="h-4 w-4" />
+        </button>
       </div>
       <div className="p-4">
-        <h3 className="font-semibold text-white">{product.name}</h3>
-        <p className="text-sm text-blue-200">{product.category}</p>
-        <div className="mt-3 flex items-center justify-between">
-          <div className="flex items-baseline gap-2">
-            <span className="text-yellow-400 font-bold">₹{product.price}</span>
-            {product.compareAt && (
-              <span className="text-xs line-through text-blue-300">₹{product.compareAt}</span>
-            )}
+        <div className="flex items-start justify-between gap-2">
+          <div>
+            <h3 className="font-semibold text-slate-900">{item.name}</h3>
+            <p className="mt-1 text-[#0c61eb] font-semibold">{item.price} {item.prev && <span className="text-slate-400 line-through font-normal ml-2">{item.prev}</span>}</p>
           </div>
-          <button className="text-sm text-blue-100 hover:text-yellow-300">View details</button>
+          <button className="rounded-full px-4 py-2 bg-[#0c61eb] text-white text-sm font-medium hover:brightness-110">Add to Cart</button>
         </div>
       </div>
     </div>
   );
 }
 
-const SectionHeader = ({ id, icon: Icon, title, subtitle }) => (
-  <div id={id} className="flex items-center justify-between mb-4">
-    <div>
-      <div className="flex items-center gap-2">
-        {Icon && <Icon className="text-yellow-400" size={18} />}
-        <h3 className="text-xl font-bold text-white">{title}</h3>
-      </div>
-      {subtitle && <p className="text-sm text-blue-200 mt-1">{subtitle}</p>}
-    </div>
-    <a href="#" className="text-sm text-yellow-300 hover:text-yellow-200">View all</a>
-  </div>
-);
-
-function ProductSections({ productsNew, productsSale, favorites, onToggleFavorite }) {
-  const favoriteIds = useMemo(() => new Set(favorites.map((f) => f.id)), [favorites]);
-
+export default function ProductSections() {
   return (
-    <section className="bg-gradient-to-b from-blue-800 to-blue-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* New & Interesting */}
-        <SectionHeader id="new" icon={Gift} title="New & Interesting" subtitle="Fresh drops curated this week" />
+    <section className="relative py-16 bg-gradient-to-b from-white to-slate-50">
+      <SectionHeader id="new" eyebrow="Exclusives" title="New & Interesting" subtitle="Curated drops that blend heritage with modern silhouettes." />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {productsNew.map((p) => (
-            <ProductCard key={p.id} product={p} isFavorite={favoriteIds.has(p.id)} onToggleFavorite={onToggleFavorite} />
+            <ProductCard key={p.id} item={p} />
           ))}
         </div>
+      </div>
 
-        {/* Puppets Feature */}
-        <div className="mt-12">
-          <div className="relative overflow-hidden rounded-2xl ring-1 ring-blue-700/60 bg-[url('https://images.unsplash.com/photo-1695740633675-d060b607f5c4?ixid=M3w3OTkxMTl8MHwxfHNlYXJjaHwxfHxjZXJhbWljJTIwcG90dGVyeSUyMGhhbmRtYWRlfGVufDB8MHx8fDE3NjE1MDAxMzd8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80')] bg-cover bg-center">
-            <div className="bg-blue-950/70 p-8">
-              <h4 className="text-2xl font-extrabold text-yellow-400">Artisanal Puppets</h4>
-              <p className="text-blue-100 mt-2 max-w-2xl">Handcrafted puppets that celebrate tradition and craftsmanship. A whimsical addition to your space or a thoughtful gift.</p>
-              <a href="#new" className="inline-block mt-4 bg-yellow-400 text-blue-950 font-semibold px-5 py-2 rounded-md">Explore Puppets</a>
-            </div>
+      <div className="mt-16" />
+
+      <SectionHeader id="sale" eyebrow="Offers" title="Refined Picks on Sale" subtitle="Limited-time reductions on signature pieces." />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {productsSale.map((p) => (
+            <ProductCard key={p.id} item={p} />
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-16" />
+
+      <div id="video" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-2xl overflow-hidden ring-1 ring-slate-200 bg-white grid md:grid-cols-2">
+          <div className="p-8 md:p-10">
+            <h3 className="text-2xl font-bold text-slate-900">Shop via Video Call</h3>
+            <p className="mt-2 text-slate-600">Personal styling and live walkthroughs of our latest collection, right from the boutique.</p>
+            <form className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input type="text" placeholder="Your Name" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
+              <input type="email" placeholder="Email" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
+              <input type="tel" placeholder="Phone" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
+              <button type="button" className="rounded-xl bg-[#0c61eb] text-white font-semibold px-5 py-3 hover:brightness-110">Request Session</button>
+            </form>
+          </div>
+          <div className="relative min-h-[280px] md:min-h-full bg-gradient-to-br from-[#0c61eb]/10 via-sky-100 to-white">
+            <div className="absolute inset-0 m-6 rounded-2xl border-2 border-dashed border-[#0c61eb]/30" />
           </div>
         </div>
+      </div>
 
-        {/* Sale */}
-        <div className="mt-12">
-          <SectionHeader id="sale" icon={Tag} title="Sale" subtitle="Exclusive offers on limited pieces" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {productsSale.map((p) => (
-              <ProductCard key={p.id} product={p} isFavorite={favoriteIds.has(p.id)} onToggleFavorite={onToggleFavorite} />
-            ))}
-          </div>
-        </div>
+      <div className="mt-16" />
 
-        {/* Shop by Occasion */}
-        <div className="mt-12" id="occasion">
-          <h3 className="text-xl font-bold text-white mb-4">Shop by Occasion</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: 'Wedding', image: 'https://images.unsplash.com/photo-1756143059835-bebee32eeb29?ixid=M3w3OTkxMTl8MXwxfHNlYXJjaHwxfHxXZWRkaW5nfGVufDB8MHx8fDE3NjE1NTkzMTN8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80' },
-              { title: 'Festive', image: 'https://images.unsplash.com/photo-1756143059835-bebee32eeb29?ixid=M3w3OTkxMTl8MXwxfHNlYXJjaHwxfHxXZWRkaW5nfGVufDB8MHx8fDE3NjE1NTkzMTN8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80' },
-              { title: 'Everyday Elegance', image: 'https://images.unsplash.com/photo-1756143059835-bebee32eeb29?ixid=M3w3OTkxMTl8MXwxfHNlYXJjaHwxfHxXZWRkaW5nfGVufDB8MHx8fDE3NjE1NTkzMTN8MA&ixlib=rb-4.1.0&w=1600&auto=format&fit=crop&q=80' },
-            ].map((o) => (
-              <div key={o.title} className="relative rounded-xl overflow-hidden ring-1 ring-blue-700/60">
-                <img src={o.image} alt={o.title} className="w-full h-48 object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent" />
-                <div className="absolute bottom-3 left-3">
-                  <p className="text-white font-semibold">{o.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Shop via Video Call + Track order */}
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6" id="video">
-          <div className="lg:col-span-2 bg-blue-900/50 border border-blue-800 rounded-xl p-6 flex items-center justify-between">
-            <div className="max-w-xl">
-              <h4 className="text-lg font-bold text-yellow-400 flex items-center gap-2"><Video size={18}/> Shop via Video Call</h4>
-              <p className="text-blue-100 mt-1">Book a live video session to view sarees and exclusive pieces up-close with personalized guidance.</p>
-            </div>
-            <a href="#" className="bg-yellow-400 text-blue-950 font-semibold px-4 py-2 rounded-md whitespace-nowrap">Book Now</a>
-          </div>
-          <div id="track" className="bg-blue-900/50 border border-blue-800 rounded-xl p-6 flex items-center justify-between">
-            <div>
-              <h4 className="text-lg font-bold text-yellow-400 flex items-center gap-2"><Truck size={18}/> Track Your Order</h4>
-              <p className="text-blue-100 text-sm">Enter your order ID to check the latest status.</p>
-            </div>
-            <a href="#" className="text-yellow-300 hover:text-yellow-200 font-semibold">Track</a>
-          </div>
-        </div>
-
-        {/* Favorites */}
-        <div className="mt-12" id="favorites">
-          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-            <Heart className="text-yellow-400" /> Favorites
-          </h3>
-          {favorites.length === 0 ? (
-            <p className="text-blue-200">Your saved items will appear here. Tap the heart on any product to add it.</p>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {favorites.map((p) => (
-                <ProductCard key={p.id} product={p} isFavorite={true} onToggleFavorite={onToggleFavorite} />
-              ))}
-            </div>
-          )}
+      <div id="track" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-2xl overflow-hidden ring-1 ring-slate-200 bg-white p-8 md:p-10">
+          <h3 className="text-2xl font-bold text-slate-900">Track Your Order</h3>
+          <p className="mt-2 text-slate-600">Enter your order ID and email to check status.</p>
+          <form className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <input type="text" placeholder="Order ID" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
+            <input type="email" placeholder="Email" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
+            <button type="button" className="rounded-xl bg-[#0c61eb] text-white font-semibold px-5 py-3 hover:brightness-110">Check Status</button>
+          </form>
         </div>
       </div>
     </section>
   );
 }
-
-export default ProductSections;
