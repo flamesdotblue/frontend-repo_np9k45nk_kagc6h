@@ -9,9 +9,9 @@ const COLORS = {
 const Logo = () => {
   return (
     <div className="flex items-center gap-3">
-      <div className="bg-white rounded-2xl px-3 py-2.5 shadow-sm ring-1 ring-slate-200">
+      <div className="bg-white rounded-2xl px-3 py-3 shadow-sm ring-1 ring-slate-200">
         <span
-          className="block text-3xl sm:text-4xl font-extrabold leading-tight tracking-tight bg-gradient-to-b"
+          className="block text-3xl sm:text-4xl font-extrabold leading-none tracking-tight bg-gradient-to-b"
           style={{
             backgroundImage: `linear-gradient(to bottom, ${COLORS.dark}, ${COLORS.light})`,
             WebkitBackgroundClip: "text",
@@ -33,7 +33,13 @@ const Logo = () => {
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur supports-[backdrop-filter]:bg-white/5" style={{ backgroundColor: `${COLORS.dark}99`, borderBottom: "1px solid rgba(255,255,255,0.12)" }}>
+    <header
+      className="sticky top-0 z-50 w-full backdrop-blur supports-[backdrop-filter]:bg-white/5"
+      style={{
+        backgroundColor: `${COLORS.dark}99`,
+        borderBottom: `2px solid ${COLORS.gold}55`,
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Logo />
         <nav className="hidden md:flex items-center gap-6 text-sm text-white/90">
@@ -44,10 +50,16 @@ export default function Navbar() {
           <a href="#track" className="hover:text-white transition">Track Order</a>
         </nav>
         <div className="flex items-center gap-3">
-          <button className="inline-flex items-center justify-center rounded-full h-10 w-10 bg-white/10 hover:bg-white/20 text-white transition" aria-label="Favorites">
+          <button
+            className="inline-flex items-center justify-center rounded-full h-10 w-10 bg-white/10 hover:bg-white/20 text-white transition ring-1 ring-white/10 hover:ring-white/20"
+            aria-label="Favorites"
+          >
             <Heart className="h-5 w-5" />
           </button>
-          <button className="inline-flex items-center justify-center rounded-full h-10 w-10 bg-white/10 hover:bg-white/20 text-white transition" aria-label="Cart">
+          <button
+            className="inline-flex items-center justify-center rounded-full h-10 w-10 bg-white/10 hover:bg-white/20 text-white transition ring-1 ring-white/10 hover:ring-white/20"
+            aria-label="Cart"
+          >
             <ShoppingCart className="h-5 w-5" />
           </button>
         </div>

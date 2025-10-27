@@ -9,23 +9,23 @@ const COLORS = {
 const productsNew = [
   {
     id: 1,
-    name: "Royal Silk Saree",
+    name: "Kanjivaram Silk Saree",
     price: "₹24,999",
-    img: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3",
+    img: "https://source.unsplash.com/featured/800x1000/?saree,indian,silk",
     badge: "New",
   },
   {
     id: 2,
-    name: "Handcrafted Clutch",
+    name: "Embellished Potli Bag",
     price: "₹8,499",
-    img: "https://images.unsplash.com/photo-1549576490-b0b4831ef60a?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3",
+    img: "https://source.unsplash.com/featured/800x1000/?potli,handbag,clutch,indian",
     badge: "New",
   },
   {
     id: 3,
-    name: "Embroidered Sherwani",
-    price: "₹49,999",
-    img: "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3",
+    name: "Handloom Cotton Dupatta",
+    price: "₹5,999",
+    img: "https://source.unsplash.com/featured/800x1000/?dupatta,shawl,scarf,handloom",
     badge: "New",
   },
 ];
@@ -33,27 +33,27 @@ const productsNew = [
 const productsSale = [
   {
     id: 4,
-    name: "Zari Border Saree",
-    price: "₹14,999",
-    prev: "₹18,999",
-    img: "https://images.unsplash.com/photo-1605602179678-70c2c96b83dc?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3",
-    badge: "-25%",
+    name: "Raw Silk Fabric (per metre)",
+    price: "₹1,999",
+    prev: "₹2,499",
+    img: "https://source.unsplash.com/featured/800x1000/?raw-silk,fabric,textile,cloth",
+    badge: "-20%",
   },
   {
     id: 5,
-    name: "Pearl Necklace Set",
-    price: "₹12,499",
-    prev: "₹15,999",
-    img: "https://images.unsplash.com/photo-1617038260897-3f4e67d4020f?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3",
+    name: "Banarasi Brocade Saree",
+    price: "₹17,999",
+    prev: "₹22,999",
+    img: "https://source.unsplash.com/featured/800x1000/?banarasi,saree,brocade",
     badge: "-22%",
   },
   {
     id: 6,
-    name: "Velvet Tuxedo Blazer",
-    price: "₹9,999",
-    prev: "₹13,999",
-    img: "https://images.unsplash.com/photo-1520975954732-35dd22f4758f?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3",
-    badge: "-29%",
+    name: "Leather Evening Clutch",
+    price: "₹6,999",
+    prev: "₹9,499",
+    img: "https://source.unsplash.com/featured/800x1000/?evening,clutch,handbag,luxury",
+    badge: "-26%",
   },
 ];
 
@@ -106,8 +106,8 @@ function ProductCard({ item }) {
             </p>
           </div>
           <button
-            className="rounded-full px-4 py-2 text-white text-sm font-medium hover:brightness-110"
-            style={{ backgroundColor: COLORS.dark }}
+            className="rounded-full px-4 py-2 text-slate-900 text-sm font-medium hover:brightness-110"
+            style={{ background: `linear-gradient(90deg, ${COLORS.gold}, #FFD777)` }}
           >
             Add to Cart
           </button>
@@ -161,11 +161,11 @@ export default function ProductSections() {
               <input type="text" placeholder="Your Name" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
               <input type="email" placeholder="Email" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
               <input type="tel" placeholder="Phone" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
-              <button type="button" className="rounded-xl text-white font-semibold px-5 py-3 hover:brightness-110" style={{ backgroundColor: COLORS.dark }}>Request Session</button>
+              <button type="button" className="rounded-xl text-slate-900 font-semibold px-5 py-3 hover:brightness-110" style={{ background: `linear-gradient(90deg, ${COLORS.gold}, #FFD777)` }}>Request Session</button>
             </form>
           </div>
           <div className="relative min-h-[280px] md:min-h-full" style={{ background: `linear-gradient(135deg, ${COLORS.light}22, white)` }}>
-            <div className="absolute inset-0 m-6 rounded-2xl border-2 border-dashed" style={{ borderColor: `${COLORS.dark}4D` }} />
+            <div className="absolute inset-0 m-6 rounded-2xl border-2 border-dashed" style={{ borderColor: `${COLORS.gold}77` }} />
           </div>
         </div>
       </div>
@@ -179,7 +179,7 @@ export default function ProductSections() {
           <form className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <input type="text" placeholder="Order ID" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
             <input type="email" placeholder="Email" className="w-full rounded-xl border-slate-300 focus:border-[#0c61eb] focus:ring-[#0c61eb]" />
-            <button type="button" className="rounded-xl text-white font-semibold px-5 py-3 hover:brightness-110" style={{ backgroundColor: COLORS.dark }}>Check Status</button>
+            <button type="button" className="rounded-xl text-slate-900 font-semibold px-5 py-3 hover:brightness-110" style={{ background: `linear-gradient(90deg, ${COLORS.gold}, #FFD777)` }}>Check Status</button>
           </form>
         </div>
       </div>

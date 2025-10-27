@@ -10,9 +10,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-3">
         <div>
           <div className="inline-flex items-center gap-3">
-            <div className="bg-white rounded-2xl px-3 py-2.5 shadow-sm ring-1 ring-slate-200">
+            <div className="bg-white rounded-2xl px-3 py-3 shadow-sm ring-1 ring-slate-200">
               <span
-                className="block text-3xl font-extrabold leading-tight tracking-tight bg-gradient-to-b"
+                className="block text-3xl font-extrabold leading-none tracking-tight bg-gradient-to-b"
                 style={{
                   backgroundImage: `linear-gradient(to bottom, ${COLORS.dark}, ${COLORS.light})`,
                   WebkitBackgroundClip: "text",
@@ -42,7 +42,7 @@ export default function Footer() {
           </form>
         </div>
       </div>
-      <div className="border-t border-white/20">
+      <div className="border-t" style={{ borderColor: `${COLORS.gold}55` }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-white/80 flex items-center justify-between">
           <span>© {new Date().getFullYear()} KRISHNA GARI BATTALA KOTTU</span>
           <span>Crafted in India</span>
